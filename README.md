@@ -13,7 +13,7 @@
 
 ### 效果图
 
-[smartTable](https://github.com/FantasyGao/vue-smartTable/blob/master/static/table.png)
+![smartTable](https://github.com/FantasyGao/vue-smartTable/blob/master/static/table.png)
 
 #### 配置项（父组件）
 ``` 
@@ -32,7 +32,16 @@
 >query：自带参数
 ```
 
-### 使用方法
+### props
+
+| name 名称      | type 类型 | default 默认值 | describe 描述                          |
+| ------------ | :-----: | :---------: | ---------------------------------------- |
+| method        | String  |      GET       | http请求方式（GET/POST）  |
+| type     | String  |     sync     | 数据请求方式（同步/异步）|
+| url  | string |    ''     | 请求链接              |
+| query  | object |   {}    | 添加参数            |
+
+### 演示（具体可看文件）
 ``` vue
 <smartTable v-bind:get-message="tableData" v-on:receiveData="receiveData" ref="changeItem">
     <tr slot="thead">
