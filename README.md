@@ -15,7 +15,7 @@
 
 ![smartTable](https://github.com/FantasyGao/vue-smartTable/blob/master/static/table.png)
 
-#### 配置项（父组件）
+### 配置项（父组件）
 ``` 
   tableData: {
     'method': 'GET',
@@ -25,21 +25,41 @@
   },
   Data: []
 ```
-```
->method： 请求方式，可选POST、GET(默认GET)
->type: 获取方式,可选async，sync（默认sync同步）
->url：请求链接
->query：自带参数
-```
 
-### props
-
-| name 名称      | type 类型 | default 默认值 | describe 描述                          |
+| 名称      | 类型 |  默认值 |  描述                          |
 | ------------ | :-----: | :---------: | ---------------------------------------- |
 | method        | String  |      GET       | http请求方式（GET/POST）  |
 | type     | String  |     sync     | 数据请求方式（同步/异步）|
 | url  | string |    ''     | 请求链接              |
 | query  | object |   {}    | 添加参数            |
+
+### 后端数据返回格式
+| 名称      | 类型 | 默认值 | 描述                          |
+| ------------ | :-----: | :---------: | ---------------------------------------- |
+| method        | number  |             | 返回状态值 |
+| msg     | String  |          | 返回信息|
+| data  | object |         | 返回具体数据对象              |
+| count  | number |      | 返回所有总数          |
+| list  | array |      | 返回具体数据          |
+```json
+{
+	"status":1,
+	"msg":"查询成功",
+	"data":{
+		"count":3, 
+		"list":[
+			{ 
+        "id": 1,
+        "title": "ceshititle"
+       },
+       { 
+        "id": 2,
+        "title": "ceshititle"
+       }
+     ]
+  }
+}
+```
 
 ### 演示（具体可看文件）
 ``` vue
