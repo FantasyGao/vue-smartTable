@@ -25,11 +25,12 @@
   },
   Data: []
 ```
-method： 请求方式，可选POST、GET(默认GET)
-type: 获取方式,可选async，sync（默认sync同步）
-url：请求链接
-query：自带参数
-
+```
+>method： 请求方式，可选POST、GET(默认GET)
+>type: 获取方式,可选async，sync（默认sync同步）
+>url：请求链接
+>query：自带参数
+```
 
 ### 使用方法
 ``` vue
@@ -79,12 +80,6 @@ export default {
       }
       if (this.status) {
         paramsObj.show = this.show
-      }
-      if (this.tag) {
-        paramsObj.tag = this.tag
-      }
-      if (this.classic) {
-        paramsObj.classic = this.classic
       }
       this.$refs.changeItem.fetchData(paramsObj)
     }
