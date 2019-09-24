@@ -1,15 +1,19 @@
 # vue-smartTable
 
-> 基于vue2.js的智能表格插件
+> 基于vue2.js的智能表格组件
 
 ### Getting Start
 
+``` bash
+npm i --save @tingrong/vue-smarttable
 ```
-> git clone https://github.com/FantasyGao/vue-smartTable.git
-> cd vue-smartTable
-> npm install 
-> npm run dev
+```js
+// 入口文件
+import smartTable from '@tingrong/vue-smarttable';
+
+Vue.use(smartTable);
 ```
+
 
 ### 效果图
 
@@ -70,16 +74,8 @@
 }
 ```
 
-### 演示（具体可看示例文件）
-``` bash
-npm i --save @tingrong/vue-smarttable
-```
-```js
-// 入口文件
-import smartTable from '@tingrong/vue-smarttable';
+### 使用演示（具体可看示例文件）
 
-Vue.use(smartTable);
-```
 ``` vue
 <smartTable v-bind:get-message="tableData"    v-on:receiveData="receiveData" ref="changeItem">
     <tr slot="thead">
