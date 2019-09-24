@@ -99,21 +99,22 @@ export default {
 | count  | number |      | 返回所有总数          |
 | list  | array |      | 返回具体数据          |
 ```json
+// 接口结果示例
 {
-	"status":1,
-	"msg":"查询成功",
-	"data":{
-		"count":3, 
-		"list":[
-			{ 
-        "id": 1,
-        "title": "ceshititle"
-      },
-      { 
-        "id": 2,
-        "title": "ceshititle"
-      }
-    ]
+   "status":1,
+   "msg":"查询成功",
+   "data":{
+     "count":3, 
+     "list":[
+	{
+	  "id": 1,
+	  "title": "ceshititle"
+	},
+	{ 
+	  "id": 2,
+	   "title": "ceshititle"
+	 }
+     ]
   }
 }
 ```
