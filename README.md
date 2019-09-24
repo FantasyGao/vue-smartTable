@@ -1,30 +1,74 @@
 # vue-smartTable
 
-> 基于vue2.js的智能表格插件
+> 基于vue2.js的智能表格组件
 
 ### Getting Start
 
+``` bash
+npm i --save @tingrong/vue-smarttable
 ```
-> git clone https://github.com/FantasyGao/vue-smartTable.git
-> cd vue-smartTable
-> npm install 
-> npm run dev
+```js
+// 入口文件
+import smartTable from '@tingrong/vue-smarttable';
+
+Vue.use(smartTable);
 ```
+
 
 ### 效果图
 
 ![smartTable](https://github.com/FantasyGao/vue-smartTable/blob/master/table.png)
 
-### 配置项（父组件）
-``` 
-  tableParam: {
-    'method': 'GET',
-    'type': 'async',
-    'url': './static/json.json',
-    'query': {},
-    'errCb': function(err) { /* 错误回调 */ }
+### 使用示例
+``` vue
+<smartTable v-bind:table-param="tableParam" v-on:receiveData="receiveData" ref="changeItem">
+    <tr slot="thead">
+      <th>标题</th>
+      <th>类别</th>
+      <th>操作</th>
+    </tr>
+    <tr slot="tbody" v-for="item in tableData">
+      <td>{{item.title}}</td>
+      <td>{{item.classic}}</td>
+      <td>
+        <button class="btn btn-info btn-xs" @click = "toArticle(item.id,1)">预览</button>
+        <button class="btn btn-danger btn-xs" @click = "deleteArticle(item.id,item.title)">删除</button>
+      </td>
+    </tr>
+</smartTable>
+```
+javascript
+``` javascript
+<script>
+export default {
+  data () {
+    return {
+      tableParma: {
+        'method': 'GET',
+        'type': 'async',
+        'url': './static/json.json',
+        'query': {}
+      },
+      tableData: []
+    }
   },
-  tableData: []
+  methods: {
+    receiveData (data) {
+      this.tableData = data
+    },
+    search () {
+      let paramsObj = {}
+      if (this.title) {
+        paramsObj.title = this.title
+      }
+      if (this.status) {
+        paramsObj.show = this.show
+      }
+      this.$refs.changeItem.fetchData(paramsObj)
+    }
+  }
+}
+</script>
 ```
 
 | 名称      | 类型 |  默认值 |  描述                          |
@@ -51,86 +95,24 @@
 | count  | number |      | 返回所有总数          |
 | list  | array |      | 返回具体数据          |
 ```json
+// 接口结果示例
 {
-	"status":1,
-	"msg":"查询成功",
-	"data":{
-		"count":3, 
-		"list":[
-			{ 
-        "id": 1,
-        "title": "ceshititle"
-      },
-      { 
-        "id": 2,
-        "title": "ceshititle"
-      }
-    ]
+   "status":1,
+   "msg":"查询成功",
+   "data":{
+     "count":3, 
+     "list":[
+	{
+	  "id": 1,
+	  "title": "ceshititle"
+	},
+	{ 
+	  "id": 2,
+	   "title": "ceshititle"
+	 }
+     ]
   }
 }
 ```
-
-### 演示（具体可看示例文件）
-``` bash
-npm i --save @tingrong/vue-smarttable
-```
-```js
-// 入口文件
-import smartTable from '@tingrong/vue-smarttable';
-
-Vue.use(smartTable);
-```
-``` vue
-<smartTable v-bind:get-message="tableData"    v-on:receiveData="receiveData" ref="changeItem">
-    <tr slot="thead">
-      <th>标题</th>
-      <th>类别</th>
-      <th>操作</th>
-    </tr>
-    <tr slot="tbody" v-for="item in Data">
-      <td>{{item.title}}</td>
-      <td>{{item.classic}}</td>
-      <td>
-        <button class="btn btn-info btn-xs" @click = "toArticle(item.id,1)">预览</button>
-        <button class="btn btn-danger btn-xs" @click = "deleteArticle(item.id,item.title)">删除</button>
-      </td>
-    </tr>
-</smartTable>
-```
-javascript
-``` javascript
-<script>
-import smartTable from './components/smartTable.vue'
-export default {
-  data () {
-    return {
-      tableData: {
-        'method': 'GET',
-        'type': 'async',
-        'url': './static/json.json',
-        'query': {}
-      },
-      Data: []
-    }
-  },
-  components: {
-    smartTable
-  },
-  methods: {
-    receiveData (data) {
-      this.Data = data
-    },
-    search () {
-      let paramsObj = {}
-      if (this.title) {
-        paramsObj.title = this.title
-      }
-      if (this.status) {
-        paramsObj.show = this.show
-      }
-      this.$refs.changeItem.fetchData(paramsObj)
-    }
-  }
-}
-</script>
-```
+## License
+This code is distributed under the MIT License.
