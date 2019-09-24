@@ -13,17 +13,18 @@
 
 ### 效果图
 
-![smartTable](https://github.com/FantasyGao/vue-smartTable/blob/master/static/table.png)
+![smartTable](https://github.com/FantasyGao/vue-smartTable/blob/master/table.png)
 
 ### 配置项（父组件）
 ``` 
-  tableData: {
+  tableParam: {
     'method': 'GET',
     'type': 'async',
     'url': './static/json.json',
-    'query': {}
+    'query': {},
+    'errCb': function(err) { /* 错误回调 */ }
   },
-  Data: []
+  tableData: []
 ```
 
 | 名称      | 类型 |  默认值 |  描述                          |
@@ -32,6 +33,7 @@
 | type     | String  |     sync     | 数据请求方式（同步/异步）|
 | url  | string |    ''     | 请求链接              |
 | query  | object |   {}    | 添加参数            |
+| errCb  | function |   null    | 异常回调函数          |
 
 ### 异步状态时，分页参数及查找参数字段
 | 名称      | 类型 |  默认值 |  描述                          |
@@ -56,21 +58,30 @@
 		"count":3, 
 		"list":[
 			{ 
-			"id": 1,
-			"title": "ceshititle"
-		       },
-		       { 
-		       "id": 2,
-		       "title": "ceshititle"
-		       }
-     ]
+        "id": 1,
+        "title": "ceshititle"
+      },
+      { 
+        "id": 2,
+        "title": "ceshititle"
+      }
+    ]
   }
 }
 ```
 
-### 演示（具体可看文件）
+### 演示（具体可看示例文件）
+``` bash
+npm i --save @tingrong/vue-smarttable
+```
+```js
+// 入口文件
+import smartTable from '@tingrong/vue-smarttable';
+
+Vue.use(smartTable);
+```
 ``` vue
-<smartTable v-bind:get-message="tableData" v-on:receiveData="receiveData" ref="changeItem">
+<smartTable v-bind:get-message="tableData"    v-on:receiveData="receiveData" ref="changeItem">
     <tr slot="thead">
       <th>标题</th>
       <th>类别</th>

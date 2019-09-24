@@ -1,16 +1,15 @@
 {
-  "name": "smarttable",
-  "description": "A Vue.js project",
-  "version": "1.0.0",
+  "name": "@tingrong/vue-smarttable",
+  "version": "1.1.0",
+  "description": "this is a vue smart table ",
   "author": "FantasyGao <1136519360@qq.com>",
-  "private": true,
+  "main": "./smartTable",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "bootstrap": "^3.3.7",
     "vue": "^2.3.3"
   },
   "devDependencies": {
@@ -26,5 +25,18 @@
     "vue-template-compiler": "^2.3.3",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FantasyGao/vue-smartTable.git"
+  },
+  "keywords": [
+    "vue",
+    "smarttable"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FantasyGao/vue-smartTable/issues"
+  },
+  "homepage": "https://github.com/FantasyGao/vue-smartTable#readme"
 }
