@@ -21,13 +21,13 @@ Vue.use(smartTable);
 
 ### 使用示例
 ``` vue
-<smartTable v-bind:get-message="tableData"    v-on:receiveData="receiveData" ref="changeItem">
+<smartTable v-bind:table-param="tableParam" v-on:receiveData="receiveData" ref="changeItem">
     <tr slot="thead">
       <th>标题</th>
       <th>类别</th>
       <th>操作</th>
     </tr>
-    <tr slot="tbody" v-for="item in Data">
+    <tr slot="tbody" v-for="item in tableData">
       <td>{{item.title}}</td>
       <td>{{item.classic}}</td>
       <td>
@@ -40,25 +40,21 @@ Vue.use(smartTable);
 javascript
 ``` javascript
 <script>
-import smartTable from './components/smartTable.vue'
 export default {
   data () {
     return {
-      tableData: {
+      tableParma: {
         'method': 'GET',
         'type': 'async',
         'url': './static/json.json',
         'query': {}
       },
-      Data: []
+      tableData: []
     }
-  },
-  components: {
-    smartTable
   },
   methods: {
     receiveData (data) {
-      this.Data = data
+      this.tableData = data
     },
     search () {
       let paramsObj = {}
