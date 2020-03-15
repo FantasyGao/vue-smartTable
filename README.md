@@ -5,11 +5,11 @@
 ### Getting Start
 
 ``` bash
-npm i --save @tingrong/vue-smarttable
+npm i --save smart-vue-table
 ```
 ```js
 // 入口文件
-import smartTable from '@tingrong/vue-smarttable';
+import smartTable from 'smart-vue-table';
 
 Vue.use(smartTable);
 ```
